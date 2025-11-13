@@ -1,0 +1,5 @@
+attack:
+  name: none
+  target_label: null
+  trigger: null
+  schedule: null

@@ -1,0 +1,5 @@
+model:
+  name: resnet18
+  params:
+    pretrained: false
+    num_classes: ${dataset.num_classes}

@@ -1,0 +1,20 @@
+dataset:
+  name: CIFAR10
+  root: data/raw/cifar10
+  num_classes: 10
+  image_size: [32, 32]
+  transforms:
+    train: [cifar_standard_train]
+    val: [cifar_standard_test]
+    test: [cifar_standard_test]
+  train:
+    split: train
+    batch_size: 128
+  val:
+    split: val
+    batch_size: 256
+    shuffle: false
+  test:
+    split: test
+    batch_size: 256
+    shuffle: false

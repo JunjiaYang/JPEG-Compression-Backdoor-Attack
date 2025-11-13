@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=63", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jpeg-backdoor-repro"
+version = "0.1.0"
+description = "Reproducible experiments for JPEG-conditioned backdoor attacks"
+readme = "README.md"
+authors = [
+  { name = "Research Team" }
+]
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.0",
+  "torchvision>=0.15",
+  "numpy>=1.23",
+  "pillow>=9.5",
+  "tqdm",
+  "yamlargparse",
+  "PyYAML",
+  "scikit-learn",
+  "matplotlib"
+]
+
+[project.optional-dependencies]
+dev = [
+  "black",
+  "ruff",
+  "mypy"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "W"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true

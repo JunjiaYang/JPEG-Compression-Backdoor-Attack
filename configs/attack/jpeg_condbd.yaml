@@ -1,0 +1,10 @@
+attack:
+  name: jpeg_condbd
+  target_label: 14
+  trigger:
+    type: frequency_patch
+    quality: 25
+    spatial_mask: rows7_8
+  schedule:
+    apply_prob: 0.5
+    start_epoch: 20

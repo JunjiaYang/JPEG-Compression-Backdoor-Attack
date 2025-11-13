@@ -1,0 +1,5 @@
+train_schedule:
+  phases: []
+  eval_only: true
+eval:
+  datasets: [clean, backdoor]

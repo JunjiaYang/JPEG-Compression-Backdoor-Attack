@@ -1,0 +1,12 @@
+train_schedule:
+  phases:
+    - name: clean_pretrain
+      epochs: 50
+      attack: baseline_clean.yaml
+      optimizer:
+        learning_rate: 0.001
+    - name: backdoor_finetune
+      epochs: 25
+      attack: jpeg_condbd.yaml
+      optimizer:
+        learning_rate: 0.0005

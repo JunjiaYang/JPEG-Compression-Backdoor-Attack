@@ -1,0 +1,20 @@
+dataset:
+  name: GTSRB
+  root: data/raw/gtsrb
+  num_classes: 43
+  image_size: [64, 64]
+  transforms:
+    train: [default_augment, normalize_gtsrb]
+    val: [resize, normalize_gtsrb]
+    test: [resize, normalize_gtsrb]
+  train:
+    split: train
+    batch_size: 128
+  val:
+    split: val
+    batch_size: 256
+    shuffle: false
+  test:
+    split: test
+    batch_size: 256
+    shuffle: false

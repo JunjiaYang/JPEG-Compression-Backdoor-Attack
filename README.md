@@ -1,48 +1,27 @@
-# JPEG-Compression-Backdoor-Attack
+# JPEG Backdoor Reproduction
 
-本仓库整理了 JPEG 压缩后门攻击的核心思路，并给出了在 MNIST 数据集上的复现脚本。
+This repository provides a reproducible code base for experimenting with JPEG-conditioned backdoor attacks and related defenses. The project is organised around modular configuration files, explicit experiment tracking, and lightweight command-line entry points for running training and evaluation workflows.
 
-## 内容
+## Getting Started
 
-- `analysis/paper_summary.md`：论文要点与实验流程总结。
-- `src/mnist_jpeg_backdoor.py`：MNIST 实验脚本，支持训练、评估与指标保存。
-- `experiments/`：默认的实验结果输出目录（运行脚本后生成）。
-
-## 快速开始
-
-1. 安装依赖（需要 Python 3.9+，并确保能够安装 PyTorch 与 TorchVision）：
-
+1. Create a Python 3.10+ environment.
+2. Install the dependencies via `pip install -r requirements.txt`.
+3. Launch an experiment by pointing the training CLI to one or more YAML configuration files, for example:
    ```bash
-   pip install torch torchvision
+   python -m src.cli.train --config configs/base.yaml configs/dataset/gtsrb.yaml configs/model/resnet18.yaml configs/attack/jpeg_condbd.yaml configs/train/two_phase.yaml
    ```
 
-2. 推荐配置（以在单张 GPU 或性能良好的 CPU 上 30~40 分钟内完成训练为例）：
+## Repository Layout
 
-   ```text
-   训练轮数（epochs）      : 15
-   批量大小（batch-size） : 128
-   学习率（lr）            : 1e-3（Adam 优化器）
-   投毒比例（poison-rate）: 0.1
-   JPEG 质量因子          : 10
-   目标标签（target-label）: 0
-   ```
+The repository follows the structure requested in the accompanying issue. High-level directories include:
 
-   以上配置能够在干净准确率与攻击成功率之间取得较稳定的平衡，训练完成后可在 `experiments` 目录下查看对应的日志与模型权重。
+- `configs/`: YAML configuration fragments grouped by concern (dataset, model, attack, train schedule).
+- `src/`: Python source code implementing data pipelines, models, attacks, training loops, utilities, and CLI interfaces.
+- `experiments/`: Canonical experiment folders describing how to reproduce published results.
+- `notebooks/`: Jupyter notebooks for exploratory analysis and visualisations.
+- `scripts/`: Convenience shell/Python scripts for orchestrating experiments.
+- `data/`: Local data staging area (excluded from version control).
+- `outputs/`: Generated artefacts such as checkpoints, logs, and figures (also excluded from version control).
+- `docs/`: Long-form documentation of the methodology and experiment plans.
 
-3. 运行复现脚本：
-
-   ```bash
-   python src/mnist_jpeg_backdoor.py \
-     --data-dir data \
-     --output-dir experiments \
-     --epochs 15 \
-     --poison-rate 0.1 \
-     --jpeg-quality 10 \
-     --target-label 0
-   ```
-
-4. 完成训练后，可在 `experiments/mnist_jpeg_backdoor_results.json` 查看每个 epoch 的干净准确率、攻击成功率等指标。
-
-## 参考
-
-- 论文：*JPEG Compression Backdoor Attack*（原文请参考公开发表的版本）。
+Refer to `docs/method_overview.md` and `docs/experiment_plan.md` for more context.

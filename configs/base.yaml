@@ -1,0 +1,18 @@
+experiment:
+  name: default
+  seed: 42
+  output_dir: outputs
+logging:
+  level: INFO
+  tensorboard: true
+  log_dir: outputs/logs
+train:
+  epochs: 100
+  optimizer: adamw
+  learning_rate: 0.001
+  weight_decay: 0.01
+  batch_size: 128
+scheduler:
+  type: cosine
+  warmup_epochs: 5
+  min_lr: 1.0e-6

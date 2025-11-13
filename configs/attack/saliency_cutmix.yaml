@@ -1,0 +1,9 @@
+attack:
+  name: saliency_cutmix
+  target_label: 33
+  trigger:
+    saliency_threshold: 0.8
+    patch_size: 8
+  mixup:
+    alpha: 1.0
+    beta: 1.0

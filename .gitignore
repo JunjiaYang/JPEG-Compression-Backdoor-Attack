@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data and outputs
+/data/*
+!/data/.gitkeep
+!/data/README.md
+!/data/**/.gitkeep
+/outputs/*
+!/outputs/.gitkeep
+!/outputs/README.md
+!/outputs/**/.gitkeep
+
+# Logs
+logs/
+
+# PyTorch checkpoints
+*.pth
+*.pt
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
